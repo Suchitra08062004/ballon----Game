@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="div1">
+            <div class="img-box">
+            <img src="ball.jpg" width="200px" height="200px" onclick="afterclick(0)">
+        </div>
+    </div>
+        <div class="div2">
+               <div class="img-box">
+                  <img src="ball.jpg" width="200px" height="200px" onclick="afterclick(1)" >
+               </div>
+            </div>
+        <div class="div3">
+            <div class="img-box">
+               <img src="ball.jpg"width="200px" height="200px" onclick="afterclick(2)">
+            </div>
+    </div>
+        <div class="div4">
+            <div class="img-box">
+               <img src="ball.jpg" width="200px" height="200px" onclick="afterclick(3)">
+            </div>
+    </div>
+        <div class="div5">
+            <div class="img-box">
+            <img src="ball.jpg" width="200px" height="200px" onclick="afterclick(4)">
+        </div>
+    </div>
+        <div class="div6">
+            <div class="img-box">
+            <img src="ball.jpg" width="200px" height="200px" onclick="afterclick(5)">
+        </div>
+    </div>
+        <div class="scoreboard">
+                <span>Score:</span>
+                <span id="score">0</span>
+        </div>
+        <div class="popup">
+            <img src="passed.png" width="100%" alt="success">
+        </div>
+    </div>
+    <script>
+        const height=window.innerHeight;
+        const width=window.innerWidth;
+
+        let imgbox=document.getElementsByClassName("img-box");
+        let fimg=document.getElementsByTagName("img");
+
+        let popup=document.getElementsByClassName("popup")[0];
+        popup.style.visibility="hidden";
+
+        let scorepoints=document.getElementById("score");
+        let livescore=0;
+        scorepoints.innerHTML=livescore;
+
+      function showpopup(){
+         popup.style.visibility="visible";
+      }
+
+      let c0=-height-1000;
+      function loop0(){
+        if(c0==0){
+            c0=-height-200;
+        }else{
+            c1++;
+            imgbox[0].style.marginBottom=height+c1+'px';
+        }
+      }
+
+      let c1=-height-400;
+      function loop1(){
+        if(c1==0){
+            c1=-height-200;
+        }else{
+            c0++;
+            imgbox[1].style.marginBottom=height+c0+'px';
+        }
+      }
+      let c2=-height-1200;
+      function loop2(){
+        if(c2==0){
+            c2=-height-200;
+        }else{
+            c2++;
+            imgbox[2].style.marginBottom=height+c2+'px';
+        }
+      }
+      let c3=-height-600;
+      function loop3(){
+        if(c3==0){
+            c3=-height-200;
+        }else{
+            c3++;
+            imgbox[3].style.marginBottom=height+c3+'px';
+        }
+      }
+      let c4=-height-800;
+      function loop4(){
+        if(c4==0){
+            c4=-height-200;
+        }else{
+            c4++;
+            imgbox[4].style.marginBottom=height+c4+'px';
+        }
+      }
+      let c5=-height-1000;
+      function loop5(){
+        if(c5==0){
+            c5=-height-200;
+        }else{
+            c5++;
+            imgbox[5].style.marginBottom=height+c5+'px';
+        }
+      }
+
+      setInterval(loop0,1)
+      setInterval(loop1,3)
+      setInterval(loop2,2)
+      setInterval(loop3,4)
+      setInterval(loop4,2)
+      setInterval(loop5,3)
+      
+    
+        function afterclick(index){
+           let nImg=document.createElement("img");
+           nImg.src="balloon-red gif.gif"
+           nImg.alt="ball.jpg"
+
+           imgbox[index].replaceChild(nImg,fimg[index]);
+           setTimeout(divisible,600,index);
+
+           livescore+=10;
+           scorepoints.innerHTML=livescore;
+           if(livescore===60){
+            setTimeout(showpopup,2000)
+           }
+        }
+
+        function divisible(index){
+            fimg[index].style.opacity=0;
+         }
+
+
+    </script>
+</body>
+</html>
